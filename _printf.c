@@ -1,44 +1,45 @@
 #include "main.h"
+
 /**
- * _printf - produces output according to format
- * @format: character string
-* Description: this function will call the get_print function 
-* that will determine which print function to call ddepending
-* on the conversion specifiers contained in format
-* Return: number pf charactters printed
+* _printf - is a function that selects the correct function to print.
+* @format: identifier to look for.
+* Return: the length of the string.
 */
-int _printf(const char *format, ...)
-{
-	int (*pfunc)(va_list, flags_t *);
-	const char *p;
-	va_list arguments;
-	flags_t flags = {0, 0, 0};
 
-	register int count = 0;
+int _printf(const char * const format, ...)
 
-	va_start(arguments, format);
-	if (!format || (format[0] == '%' && !format[1]))
-	return (-1);
-		if (format[0] == '%' && format[1] == ' ' && !format[2])
-			return (-1);
-for (p = format; *p; p++)
 {
-	if (*p == '%')
-		p++;
-	if (*p == '%')
-		count += _putchar('%');
-	continue;
+convert_match m[] = {
+{"%s", printf_string}, {"%c", printf_char},
+{"%%", printf_37},
+{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
+{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
+{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
+{"%S", printf_exclusive_string}, {"%p", printf_pointer}
+};
+va_list args;
+int i = 0, j, len = 0;
+va_start(args, format);
+if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+return (-1);
+Here:
+while (format[i] != '\0')
+{
+j = 13;
+while (j >= 0)
+{
+if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
+{
+len += m[j].f(args);
+i = i + 2;
+goto Here;
 }
-while (get_flag(*p, &flags))
-	p++;
-	pfunc = get_print(*p);
-	count += (pfunc)
-	? pfunc(arguments, &flags)
-	: _printf("%%%c", *p);
-} else
-count += _putchar(*p);
+j--;
 }
-_putchar(-1);
-va_end(arguments);
-return (count);
+_putchar(format[i]);
+len++;
+i++;
+}
+va_end(args);
+return (len);
 }
