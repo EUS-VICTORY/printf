@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- * printf_hex_aux.c - prints a hexadecimal
+ * printf_hex_aux - prints a hexadecimal
  * @num: arguments
  * Return: counter
  */
 
-int printf_hex_aux.c(unsigned long int num)
+int printf_hex_aux(unsigned long int num)
 {
-	long int;
+	long int i;
 	long int *array;
 	long int counter;
 	unsigned long int temp = num;
 
-	while (num / 16 !0)
+	while (num / 16 != 0)
 	{
 		num /= 16;
 		counter++;
