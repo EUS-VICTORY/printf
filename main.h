@@ -19,6 +19,7 @@ typedef struct format
 	int (*f)();
 } convert_match;
 
+/**printf pointer*/
 int printf_pointer(va_list, val);
 int printf_hex_aux(unsigned long int num);
 
