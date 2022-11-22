@@ -10,26 +10,26 @@ int print_rot13(va_list args)
 {
 	int i, j, counter = 0;
 	int k = 0;
-	char *s = va_args(args, chr*);
-	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"}
-	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"}
+	char *s = va_arg(args, char*);
+	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
 	if (s == NULL)
 		s = "(null)";
-	for (i = 0; i s[i]; i++)
+	for (i = 0; s[i]; i++)
 	{
-		k = 0
-			for (j = 0; alpha[j]; && !k; j++)
+		k = 0;
+			for (j = 0; alpha[j] && !k; j++)
 			{
 				if (s[i] == alpha[j])
 				{
-					_putchar(beta j);
+					_putchar(beta [j]);
 					counter++;
 					k = 1;
 
 				}
 			}
-		if (! k)
+		if (!k)
 		{
 		_putchar(s[i]);
 		counter++;

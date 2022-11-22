@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 /**
- * struct-format - match the conversio specifier for printf
+ * struct format - match the conversion specifier for printf
  * @id: type char pointer to the specifier
  * @f: type pointer to function for the conversion specifier
  */
@@ -20,7 +20,8 @@ typedef struct format
 } convert_match;
 
 /**printf pointer*/
-int printf_pointer(va_list, val);
+int printf_pointer(va_list val);
+
 int printf_hex_aux(unsigned long int num);
 
 int printf_HEX_aux(unsigned int num);

@@ -1,73 +1,194 @@
-printf(3) - Linux man page
+.\" _printf man page
 
-Name
+.\"
 
-printf, fprintf, sprintf, snprintf, vprintf, vfprintf, vsprintf, vsnprintf - formatted output conversion
+.\"
 
-SYNOPSIS
+.\"
 
-#include <stdio.h>
+.\"
 
-int printf(const char *format, ...);
+.\"
 
-int fprintf(FILE *stream, const char *format, ...);
+.TH _PRINTF "August 05 2022" "0.1" "Library functions manual"
 
-int sprintf(char *str, const char *format, ...);
 
-int snprintf(char *str, size_t size, const char *format, ...);
 
-#include <stdarg.h>
+.SH NAME
 
-int vprintf(const char *format, va_list ap);
+.SH ""
 
-int vfprintf(FILE *stream, const char *format, va_list ap);
 
-int vsprintf(char *str, const char *format, va_list ap);
 
-int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+.B _printf
 
-snprintf(), vsnprintf():
+- custom version for printf function.
 
-_BSD_SOURCE || _XOPEN_SOURCE >= 500 || _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L;
 
-or cc -std=c99
 
-Description
+.SH SYNOPSIS
 
-The functions in the printf() family produce output according to a format as described below. The functions printf() and vprintf() write output to stdout, the standard output stream; fprintf() and vfprintf() write output to the given output stream; sprintf(), snprintf(), vsprintf() and vsnprintf() write to the character string str.
+.SH ""
 
-The functions snprintf() and vsnprintf() write at most size bytes (including the terminating null byte ('\0')) to str.
 
-The functions vprintf(), vfprintf(), vsprintf(), vsnprintf() are equivalent to the functions printf(), fprintf(), sprintf(), snprintf(), respectively, except that they are called with a va_list instead of a variable number of arguments. These functions do not call the va_end macro. Because they invoke the va_arg macro, the value of ap is undefined after the call. See stdarg(3).
 
-These eight functions write the output under the control of a format string that specifies how subsequent arguments (or arguments accessed via the variable-length argument facilities of stdarg(3)) are converted for output.
+#include "main.h"
 
-C99 and POSIX.1-2001 specify that the results are undefined if a call to sprintf(), snprintf(), vsprintf(), or vsnprintf() would cause copying to take place between objects that overlap (e.g., if the target string array and one of the supplied input arguments refer to the same buffer). See NOTES.
 
-Return value
 
-Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
+int _printf(const char *[FORMAT], ...);
 
-The functions snprintf() and vsnprintf() do not write more than size bytes (including the terminating null byte ('\0')). If the output was truncated due to this limit then the return value is the number of characters (excluding the terminating null byte) which would have been written to the final string if enough space had been available. Thus, a return value of size or more means that the output was truncated. (See also below under NOTES.)
 
-If an output error is encountered, a negative value is returned.
 
-Format of the format string
+.SH DESCRIPTION
 
-The format string is a character string, beginning and ending in its initial shift state, if any. The format string is composed of zero or more directives: ordinary characters (not %), which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more subsequent arguments. Each conversion specification is introduced by the character %, and ends with a conversion specifier. In between there may be (in this order) zero or more flags, an optional minimum field width, an optional precision and an optional length modifier.
+.SH ""
 
-The arguments must correspond properly (after type promotion) with the conversion specifier. By default, the arguments are used in the order given, where each '*' and each conversion specifier asks for the next argument (and it is an error if insufficiently many arguments are given). One can also specify explicitly which argument is taken, at each place where an argument is required, by writing "%m$" instead of '%' and "*m$" instead of '*', where the decimal integer m denotes the position in the argument list of the desired argument, indexed starting from 1. Thus,
+The printf function sends formatted output to stdout.
 
-printf("%*d", width, num);
+A custom _printf() for learning purposes was developed by cohort  #8 students Nicks and Mose Parsanka.
 
-and
+_printf() function format string is a character string, beginning and ending in its initial shift state, if any.
 
-printf("%2$*1$d", width, num);
+These arguments are placed using the percentage '%' operator
 
-are equivalent. The second style allows repeated references to the same argument. The C99 standard does not include the style using '$', which comes from the Single UNIX Specification. If the style using '$' is used, it must be used throughout for all conversions taking an argument and all width and precision arguments, but it may be mixed with "%%" formats which do not consume an argument. There may be no gaps in the numbers of arguments specified using '$'; for example, if arguments 1 and 3 are specified, argument 2 must also be specified somewhere in the format string.
+.SS Compilation
 
-For some numeric conversions a radix character ("decimal point") or thousands' grouping character is used. The actual character used depends on the LC_NUMERIC part of the locale. The POSIX locale uses '.' as radix character, and does not have a grouping character. Thus,
+.P
 
-printf("%'.2f", 1234567.89);
+.RS
 
-results in "1234567.89" in the POSIX locale, in "1234567,89" in the nl_NL locale, and in "1.234.567,89" in the da_DK locale.
+#include "main.h"
+
+$ gcc -Wall -Werror -Wextra -pedantic -Wno-format *.c
+
+$ gcc -Wall -Werror -Wextra -pedantic -g -Wno-format *.c (for gdb debbuging)
+
+.RE
+
+.SS Printing
+
+.RS
+
+int _printf(const char *[FORMAT], ...);
+
+FORMAT is the string that takes n specifier followed by a '%'
+
+symbol. i.e. "Hello this is %s from %d cohort". '...' is the variadic \
+
+(any type of variable).
+
+.SS Example
+
+.RS
+
+.B Input
+
+.PP
+
+_printf("Hello this is %s from %d cohort\\n\\", 33);
+
+.PP
+
+.B Output
+
+.PP
+
+Hello this is %s from %d cohort
+
+.RE
+
+.SS Return Value
+
+Return value is a n number of characters except NULL
+
+.SH FLAG SPECIFIERS
+
+.SH ""
+
+custom and non-custom specifier modifiers
+
+.SH THE LENGTH MODIFIERS
+
+.SH ""
+
+Length modifiers.
+
+.SH THE CONVERSION SPECIFIERS
+
+.SH ""
+
+.RS
+
+Current arguments handled by conversion specifiers:
+
+.IT
+
+.B %
+
+- % symbol is set without argument and conversion specification has to be'%%'.
+
+.IT
+
+.B c
+
+- integer or char argument converted to unsigned char.
+
+.IT
+
+.B d, i
+
+- int argument is converted to signed decimal integer.
+
+.IT
+
+.B s
+
+- string argument. _printf handles s conversion specifier if the argument value
+
+ is not a pointer to a literal string. \
+
+.IT
+
+.B o, u, x, X
+
+- unsigned int argument converted to unsigned octal (o), unsigned decimal (u),
+
+unsigned hexidecimal notation (x) for lower case and (X) for upper case
+
+.IT
+
+.B b
+
+- The unsigned int argument is converted to binary.
+
+.IT
+
+.B p
+
+- The pointer is printed in hexidecimal format preceded by '0x'.
+
+.IT
+
+.B r, R
+
+- 'r' prints string in reverse. 'R' prints encrypted rot13.
+
+.IT
+
+.B S
+
+- ascii <32 & >127 has to appear in the argument string. converted to
+
+hexadecimal preceded by \x
+
+.RE
+
+.P
+
+.SH "AUTHORS"
+
+.SH ""
+EUNICE EUNICE
+
+AMANI KEBEDE

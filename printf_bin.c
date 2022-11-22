@@ -21,7 +21,7 @@ if (p >> (31 - i))
 flag = 1;
 if (flag)
 {
-b = p>> (31 - i);
+b = p >> (31 - i);
 _putchar(b + 48);
 cont++;
 }
@@ -33,6 +33,3 @@ _putchar('0');
 }
 return (cont);
 }
- 
-
-

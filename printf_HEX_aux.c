@@ -26,7 +26,6 @@ int printf_HEX_aux(unsigned int num)
 		array[i] = temp % 16;
 		temp /= 16;
 	}
-	
 	for (i = counter - 1; i >= 0 ; i--)
 	{
 		if (array[i] > 9)
