@@ -15,8 +15,8 @@
 
 typedef struct format
 {
-	char *id;
-	int (*f)();
+char *id;
+int (*f)();
 } convert_match;
 
 /**printf pointer*/

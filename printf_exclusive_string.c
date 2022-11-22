@@ -6,7 +6,7 @@
  * Return: the length of the string
  */
 
-int printf_exclusive_string(va_list, val)
+int printf_exclusive_string(va_list val)
 {
 	char *s;
 	int i, len = 0;
