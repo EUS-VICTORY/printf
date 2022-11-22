@@ -2,10 +2,10 @@
 /**
  * _printf - produces output according to format
  * @format: character string
-* Description: this function will call the get_print function 
-* that will determine which print function to call ddepending
-* on the conversion specifiers contained in format
-* Return: number pf charactters printed
+ * Description: this function will call the get_print function
+ * that will determine which print function to call ddepending
+ * on the conversion specifiers contained in format
+ * Return: number pf charactters printed
 */
 int _printf(const char *format, ...)
 {
