@@ -1,18 +1,12 @@
 #include "main.h"
 
 /**
-<<<<<<< HEAD
-* _printf - is a function that selects the correct function to print.
-* @format: identifier to look for.
-* Return: the length of the string.
-=======
  * _printf - produces output according to format
  * @format: character string
  * Description: this function will call the get_print function
  * that will determine which print function to call ddepending
  * on the conversion specifiers contained in format
  * Return: number pf charactters printed
->>>>>>> eb863c9602d5aac749279210fc7cf728cab0013d
 */
 
 int _printf(const char * const format, ...)
