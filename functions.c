@@ -43,7 +43,6 @@ int flags, int width, int precision, int size)
 {
 int length = 0, i;
 char *str = va_arg(types, char *);
-
 UNUSED(buffer);
 UNUSED(flags);
 UNUSED(width);
@@ -61,13 +60,14 @@ if (precision >= 0 && precision < length)
 length = precision;
 if (width > length)
 {
-(flags & F_MINUS)
+if (flags & F_MINUS)
+{
 write(1, &str[0], length);
 for (i = width - length; i > 0; i--)
 write(1, " ", 1);
 return (width);
 }
-																else
+else
 {
 for (i = width - length; i > 0; i--)
 write(1, " ", 1);
@@ -92,9 +92,7 @@ return (write(1, str, length));
 */
 
 int print_percent(va_list types, char buffer[],
-
 int flags, int width, int precision, int size)
-
 {
 UNUSED(types);
 UNUSED(buffer);
@@ -119,7 +117,6 @@ return (write(1, "%%", 1));
 */
 
 int print_int(va_list types, char buffer[],
-
 int flags, int width, int precision, int size)
 {
 int i = BUFF_SIZE - 2;
@@ -136,7 +133,6 @@ if (n < 0)
 num = (unsigned long int)((-1) * n);
 is_negative = 1;
 }
-
 while (num > 0)
 {
 buffer[i--] = (num % 10) + '0';
@@ -160,14 +156,11 @@ return (write_number(is_negative, i, buffer, flags, width, precision, size));
 */
 
 int print_binary(va_list types, char buffer[],
-
 int flags, int width, int precision, int size)
-
 {
 unsigned int n, m, i, sum;
 unsigned int a[32];
 int count;
-
 UNUSED(buffer);
 UNUSED(flags);
 UNUSED(width);

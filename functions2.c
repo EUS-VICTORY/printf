@@ -40,18 +40,15 @@ buffer[ind--] = map_to[num_addrs % 16];
 num_addrs /= 16;
 length++;
 }
-
 if ((flags & F_ZERO) && !(flags & F_MINUS))
 padd = '0';
 if (flags & F_PLUS)
 extra_c = '+', length++;
 else if (flags & F_SPACE)
 extra_c = ' ', length++;
-ind++;
-																	
+ind++;							
 /*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
-
-																return (write_pointer(buffer, ind, length,
+return (write_pointer(buffer, ind, length,
 width, flags, padd, extra_c, padd_start));
 }
 
