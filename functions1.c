@@ -102,6 +102,7 @@ flags, 'x', width, precision, size));
 * @width: get width
 * @size: size specification
 * @size: Size specifier
+* @precision: specification of precision
 * Return: Number of chars printed
 */
 
