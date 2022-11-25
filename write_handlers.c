@@ -4,7 +4,7 @@
 
 /**
 * handle_write_char - Prints a string
-*  char types.
+* @char: types.
 * @buffer: Buffer array to handle print
 * @flags:  Calculates active flags.
 * @width: get width.
@@ -238,7 +238,8 @@ if (extra_c)
 
 buffer[--ind] = extra_c;
 
-return (write(1, &buffer[ind], length) + write(1, &buffer[3], i - 3));
+return (write(1, &buffer[ind], length)
++ write(1, &buffer[3], i - 3));
 }
 
 else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buffer */

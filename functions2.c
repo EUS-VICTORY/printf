@@ -8,15 +8,14 @@
 * print_pointer - Prints the value of a pointer variable
 * @types: List a of arguments
 * @buffer: Buffer array to handle print
-* @flags:  Calculates active flags
+* @flags: Calculates active flags
 * @width: get width
-* @precision: Precision specification
-* @siz: Size specifier
+* @precision: specification of precision
+* @size: Size specifier
 * Return: Number of chars printed.
 */
 
-print_pointer(va_list types, char buffer[],
-int flags, int width, int precision, int size)
+print_pointer(va_list types, char buffer[], int flags, int width, int precision int size)
 {
 char extra_c = 0, padd = ' ';
 int ind = BUFF_SIZE - 2, length = 2, padd_start = 1; /* length=2, for '0x' */
@@ -48,7 +47,7 @@ extra_c = '+', length++;
 else if (flags & F_SPACE)
 extra_c = ' ', length++;
 ind++;
-																	
+
 /*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
 
 																return (write_pointer(buffer, ind, length,
@@ -63,7 +62,7 @@ width, flags, padd, extra_c, padd_start));
 * @buffer: Buffer array to handle print
 * @flags:  Calculates active flags
 * @width: get width
-* precision: Precision specification
+* @precision: Precision specification
 * @size: Size specifier
 * Return: Number of chars printed
 */
@@ -79,7 +78,8 @@ UNUSED(precision);
 UNUSED(size);
 if (str == NULL)
 return (write(1, "(null)", 6));
-else (str[i] != '\0')
+else
+(str[i] != '\0')
 {
 if (is_printable(str[i]))
 buffer[i + offset] = str[i];

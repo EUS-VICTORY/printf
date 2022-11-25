@@ -3,21 +3,15 @@
 void print_buffer(char buffer[], int *buff_ind);
 
 /**
-<<<<<<< HEAD
-* _printf - Printf function
-* @format: format.
-* Return: Printed chars.
-=======
  * _printf - produces output according to format
  * @format: character string
  * Description: this function will call the get_print function
- * that will determine which print function to call ddepending
- * on the conversion specifiers contained in format
- * Return: number pf charactters printed
->>>>>>> 2c28dcfe1bc4f3d6388f81bba23a9068509744cb
+ *              that will determine which print function to call ddepending
+ *              on the conversion specifiers contained in format
+ * Return: number pf characters printed
 */
 
-int _printf(const char *format, ...)
+int _printf(const char *const format, ...)
 
 {
 int i, printed = 0, printed_chars = 0;

@@ -67,7 +67,7 @@ for (i = width - length; i > 0; i--)
 write(1, " ", 1);
 return (width);
 }
-																else
+else
 {
 for (i = width - length; i > 0; i--)
 write(1, " ", 1);
@@ -121,11 +121,11 @@ return (write(1, "%%", 1));
 int print_int(va_list types, char buffer[],
 
 int flags, int width, int precision, int size)
-{
 int i = BUFF_SIZE - 2;
 int is_negative = 0;
 long int n = va_arg(types, long int);
 unsigned long int num;
+{
 n = convert_size_number(n, size);
 if (n == 0)
 buffer[i--] = '0';
@@ -163,10 +163,10 @@ int print_binary(va_list types, char buffer[],
 
 int flags, int width, int precision, int size)
 
+int count;
 {
 unsigned int n, m, i, sum;
 unsigned int a[32];
-int count;
 
 UNUSED(buffer);
 UNUSED(flags);
@@ -181,7 +181,7 @@ for (i = 1; i < 32; i++)
 m /= 2;
 a[i] = (n / m) % 2;
 }
-for (i = 0, sum = 0, count = 0; i < 32; i++)
+for (i = 0; sum = 0; count = 0; i < 32; i++)
 {
 sum += a[i];
 if (sum || i == 31)
