@@ -192,6 +192,10 @@ long int convert_size_number(long int num, int size);
 
 long int convert_size_unsgnd(unsigned long int num, int size);
 
+<<<<<<< HEAD
 
 
 #endif /* MAIN_H */
+=======
+#endif  
+>>>>>>> ceb280dcecf0861fd8d024e7da86d3f60854cdd9
