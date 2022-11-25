@@ -1,12 +1,25 @@
 #include "main.h"
 
 /**
+<<<<<<< HEAD
+ * _printf - produces output according to format
+ * @format: character string
+ * Description: this function will call the get_print function
+ *              that will determine which print function to call ddepending
+ *              on the conversion specifiers contained in format
+ * Return: number pf characters printed
+*/
+
+int _printf(const char *const format, ...)
+
+=======
 * _printf - prints anything
 *  @format: the format string
 * Return: number of bytes printed
 */
 
 int _printf(const char *format, ...)
+>>>>>>> ceb280dcecf0861fd8d024e7da86d3f60854cdd9
 {
 int sum = 0;
 va_list ap;

@@ -192,4 +192,14 @@ int _printf(const char *format, ...);
 
 
 
+<<<<<<< HEAD
 #endif
+=======
+<<<<<<< HEAD
+
+
+#endif /* MAIN_H */
+=======
+#endif  
+>>>>>>> ceb280dcecf0861fd8d024e7da86d3f60854cdd9
+>>>>>>> a32b797147b16afe5f9fd3ead5b9bc3d733cc365
