@@ -45,12 +45,12 @@ if (flags & F_PLUS)
 extra_c = '+', length++;
 else if (flags & F_SPACE)
 extra_c = ' ', length++;
-<<<<<<< HEAD
+<< << << << HEAD
 ind++;
 
-=======
-ind++;							
->>>>>>> ceb280dcecf0861fd8d024e7da86d3f60854cdd9
+== == == =
+ind++;
+>> >> >> >> ceb280dcecf0861fd8d024e7da86d3f60854cdd9
 /*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
 return (write_pointer(buffer, ind, length,
 width, flags, padd, extra_c, padd_start));

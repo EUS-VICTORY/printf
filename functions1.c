@@ -49,12 +49,12 @@ int print_octal(va_list types, char buffer[],
 
 int flags, int width, int precision, int size)
 {
-i = BUFF_SIZE - 2;
+int i = BUFF_SIZE - 2;
 unsigned long int num = va_arg(types, unsigned long int);
 unsigned long int init_num = num;
 
 UNUSED(width);
-um = convert_size_unsgnd(num, size);
+num = convert_size_unsgnd(num, size);
 if (num == 0)
 buffer[i--] = '0';
 buffer[BUFF_SIZE - 1] = '\0';
@@ -118,7 +118,7 @@ flags, 'X', width, precision, size));
 /**
 * print_hexa - Prints a hexadecimal number in lower or upper
 * @types: Lista of arguments
-*  @map_to: Array of values to map the number to
+* @map_to: Array of values to map the number to
 * @buffer: Buffer array to handle print
 * @flags:  Calculates active flags
 * @flag_ch: Calculates active flags
